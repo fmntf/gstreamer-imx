@@ -40,6 +40,7 @@ def check_vivante_egl(conf, egl_extra_defines, check_for_viv_header = False):
 	if check_for_viv_header:
 		retval = retval and conf.check_cc(mandatory = 0, header_name = 'EGL/eglvivante.h', uselib_store = 'EGL')
 	retval = retval and conf.check_cc(mandatory = 0, header_name = 'EGL/egl.h', uselib_store = 'EGL')
+	conf.env.append_value('INCLUDES', ['/usr/include/vivante'])
 	conf.env['CFLAGS'] = old_cflags
 	if retval:
 		conf.env['DEFINES_EGL'] += extra_defines
