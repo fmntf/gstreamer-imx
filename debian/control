@@ -1,0 +1,12 @@
+Source: gstreamer-imx
+Section: unknown
+Priority: optional
+Maintainer: Francesco Montefoschi <francesco.monte@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), libimxvpuapi0, libimxvpuapi-dev, gstreamer1.0-tools, libgstreamer1.0-dev, gstreamer1.0-plugins-bad, linux-headers, libgstreamer-plugins-base1.0-dev, imx-gpu-viv-9t6-dev
+Standards-Version: 3.9.4
+Homepage: https://github.com/Freescale/gstreamer-imx
+
+Package: gstreamer-imx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: This is a set of GStreamer 1.0 plugins for Freescale's i.MX platform, which make use of the i.MX multimedia capabilities.

@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@ 
+
+override_dh_auto_configure:
+	CFLAGS="-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mvectorize-with-neon-quad" ./waf configure --prefix=/usr --kernel-headers=/usr/src/linux-headers-3.14.28-udooqdl/
+	
+override_dh_auto_build:
+	./waf
+
+override_dh_auto_install:
+	./waf install --destdir=debian/gstreamer-imx
+	mkdir -p $(CURDIR)/debian/gstreamer-imx/usr/lib/arm-linux-gnueabihf
+	mv $(CURDIR)/debian/gstreamer-imx/usr/lib/gstreamer-1.0 $(CURDIR)/debian/gstreamer-imx/usr/lib/arm-linux-gnueabihf/gstreamer-1.0
+
+override_dh_auto_clean:
+	./waf clean || true
+	rm -rf build .waf* .pc .lock-waf_linux2_build || true
+
