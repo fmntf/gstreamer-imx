@@ -1,3 +1,9 @@
+gstreamer-imx (0.12) wily; urgency=medium
+
+  * Updated to upstream aa50ca9048de3db1e65daf67e5764428faeaafb2
+
+ -- Francesco Montefoschi <francesco.monte@gmail.com>  Mon, 11 Jan 2016 10:29:22 +0100
+
 gstreamer-imx (0.11.1-git813756a) trusty; urgency=low
 
   * Initial release
